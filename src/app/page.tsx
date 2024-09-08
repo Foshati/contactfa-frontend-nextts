@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button"
+import { ContactForm } from "@/components/contact-form"
 
 export default function Home() {
   return (
-    <div>
-      <Button>Click me</Button>
+    <div className=" flex justify-center  items-center h-screen">
+      <ContactForm/>
     </div>
   )
 }
