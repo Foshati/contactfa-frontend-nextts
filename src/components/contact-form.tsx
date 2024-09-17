@@ -23,13 +23,9 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { formSchema } from "@/lib/schemas";
+import { send } from "@/lib/email";
 
-const formSchema = z.object({
-  firstName: z.string().min(2).max(50),
-  lastName: z.string().min(2).max(50),
-  email: z.string().email(),
-  Message: z.string().min(6).max(150),
-});
 
 export function ContactForm() {
   // 1. Define your form.
@@ -45,6 +41,7 @@ export function ContactForm() {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
+    send(values)
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
@@ -69,7 +66,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>firstName</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="sam" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -83,7 +80,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>lastName</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="foshati" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -97,7 +94,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>email</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="amirrezafoshati@gmail.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -111,7 +108,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="hello fa" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
